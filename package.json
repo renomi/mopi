@@ -4,12 +4,18 @@
   "version": "1.0.0",
   "scripts": {
     "start": "expo start",
-    "reset-project": "node ./scripts/reset-project.js",
-    "android": "expo start --android",
-    "ios": "expo start --ios",
+    "prebuild": "expo prebuild",
+    "android": "expo run:android",
+    "build:development:android": "eas build --profile development --platform android",
+    "build:development:ios": "eas build --profile development --platform ios",
+    "build:preview:android": "eas build --profile preview --platform android ",
+    "build:preview:ios": "eas build --profile preview --platform ios ",
+    "ios": "expo run:ios",
     "web": "expo start --web",
+    "xcode": "xed -b ios",
     "test": "jest --watchAll",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "reset-project": "node ./scripts/reset-project.js"
   },
   "jest": {
     "preset": "jest-expo"
@@ -18,7 +24,9 @@
     "@expo/vector-icons": "^14.0.2",
     "@react-navigation/native": "^6.0.2",
     "expo": "~51.0.28",
+    "expo-build-properties": "~0.12.5",
     "expo-constants": "~16.0.2",
+    "expo-dev-client": "~4.0.28",
     "expo-font": "~12.0.9",
     "expo-linking": "~6.3.1",
     "expo-router": "~3.5.23",
