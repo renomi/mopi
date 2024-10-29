@@ -8,9 +8,11 @@ import 'react-native-reanimated';
 
 import '@/styles';
 import { APIProvider } from '@/core/api';
+import { hydrateAuth } from '@/core/auth';
 import { initI18n } from '@/core/i18n';
 
 SplashScreen.preventAutoHideAsync();
+hydrateAuth();
 
 export default function RootLayout() {
   const [isI18nInitialized, setIsI18nInitialized] = useState(false);
