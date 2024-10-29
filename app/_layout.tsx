@@ -4,6 +4,7 @@ import type { PropsWithChildren } from 'react';
 import { StyleSheet } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { KeyboardProvider } from 'react-native-keyboard-controller';
+import { Toaster } from 'sonner-native';
 import 'react-native-reanimated';
 
 import '@/styles';
@@ -40,6 +41,7 @@ function Providers({ children }: PropsWithChildren) {
       <APIProvider>
         <KeyboardProvider>{children}</KeyboardProvider>
       </APIProvider>
+      <Toaster />
     </GestureHandlerRootView>
   );
 }
