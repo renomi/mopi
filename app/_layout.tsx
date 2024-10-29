@@ -20,7 +20,7 @@ export default function RootLayout() {
 
   useEffect(() => {
     initI18n().then(() => {
-      SplashScreen.hideAsync().then(() => setIsI18nInitialized(true));
+      setIsI18nInitialized(true);
     });
   }, []);
 
@@ -29,7 +29,8 @@ export default function RootLayout() {
   return (
     <Providers>
       <Stack>
-        <Stack.Screen name="index" />
+        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+        <Stack.Screen name="login" />
       </Stack>
     </Providers>
   );

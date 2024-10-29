@@ -8,7 +8,7 @@ import { Button, Input, Text } from '@/ui';
 
 const DEFAULT_OFFSET = 50;
 
-export default function Index() {
+export default function HomeScreen() {
   const { styles } = useStyles(stylesheet);
 
   return (
