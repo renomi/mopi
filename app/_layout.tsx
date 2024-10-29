@@ -7,6 +7,7 @@ import { KeyboardProvider } from 'react-native-keyboard-controller';
 import 'react-native-reanimated';
 
 import '@/styles';
+import { APIProvider } from '@/core/api';
 import { initI18n } from '@/core/i18n';
 
 SplashScreen.preventAutoHideAsync();
@@ -34,7 +35,9 @@ export default function RootLayout() {
 function Providers({ children }: PropsWithChildren) {
   return (
     <GestureHandlerRootView style={styles.container}>
-      <KeyboardProvider>{children}</KeyboardProvider>
+      <APIProvider>
+        <KeyboardProvider>{children}</KeyboardProvider>
+      </APIProvider>
     </GestureHandlerRootView>
   );
 }
