@@ -5,6 +5,7 @@
   },
   "build": {
     "development": {
+      "node": "20.0.0",
       "developmentClient": true,
       "distribution": "internal",
       "env": {
@@ -12,12 +13,14 @@
       }
     },
     "preview": {
+      "node": "20.0.0",
       "distribution": "internal",
       "env": {
         "APP_VARIANT": "preview"
       }
     },
     "production": {
+      "node": "20.0.0",
       "autoIncrement": true,
       "resourceClass": "large",
       "env": {

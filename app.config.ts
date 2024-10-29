@@ -83,6 +83,16 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
       },
     ],
     'expo-router',
+    [
+      'expo-font',
+      {
+        fonts: [
+          './assets/fonts/Onest-Regular.ttf',
+          './assets/fonts/Onest-Medium.ttf',
+          './assets/fonts/Onest-Bold.ttf',
+        ],
+      },
+    ],
   ],
   experiments: {
     typedRoutes: true,

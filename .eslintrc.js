@@ -1,11 +1,12 @@
 // https://docs.expo.dev/guides/using-eslint/
 module.exports = {
   extends: ['expo', 'prettier'],
-  plugins: ['prettier', 'react-native', 'import'],
+  plugins: ['prettier', 'react-native', 'import', 'react-native-unistyles'],
   rules: {
     'prettier/prettier': ['error', { singleQuote: true }],
 
     'react-native/no-unused-styles': 'error',
+    'react-native-unistyles/no-unused-styles': 'error',
 
     'sort-imports': [
       'error',
