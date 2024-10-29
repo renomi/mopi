@@ -5,7 +5,9 @@ import { useForm } from 'react-hook-form';
 import { View } from 'react-native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-controller';
 import { createStyleSheet, useStyles } from 'react-native-unistyles';
+import { toast } from 'sonner-native';
 
+import { useLogin } from '@/core/api/auth';
 import { Button, ControlledInput } from '@/ui';
 import { loginSchema, LoginSchema } from '@/utils/validation';
 
@@ -19,8 +21,20 @@ export default function LogInScreen() {
     defaultValues: { email: '', password: '' },
   });
 
+  const { mutate: login, isPending } = useLogin();
+
   const onSubmit = (data: LoginSchema) => {
-    console.log('submit', data);
+    login(data, {
+      onSuccess: (response) => {
+        console.log('🧐 ~ onSubmit ~ response:', response);
+      },
+      onError: (err) => {
+        console.log('🧐 ~ onSubmit ~ err:', err);
+        // @ts-expect-error - TODO: update error response type
+        const message = err.response?.data?.message ?? err.message;
+        toast.error(message);
+      },
+    });
   };
   return (
     <KeyboardAwareScrollView
@@ -51,7 +65,12 @@ export default function LogInScreen() {
           )}
         />
       </View>
-      <Button onPress={handleSubmit(onSubmit)} variant="brand" text="Submit" />
+      <Button
+        onPress={handleSubmit(onSubmit)}
+        loading={isPending}
+        variant="brand"
+        text="Submit"
+      />
     </KeyboardAwareScrollView>
   );
 }
