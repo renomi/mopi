@@ -7674,6 +7674,11 @@ react-native-keyboard-controller@^1.14.2:
   resolved "https://registry.yarnpkg.com/react-native-keyboard-controller/-/react-native-keyboard-controller-1.14.2.tgz#231882ac590eae3d9ea0aff859de59c44932bf48"
   integrity sha512-1AgJo9byz9mJFnXH5WX4sGX88S9gh6lIREuurB96uoXdR7Xa17XCYd+JsrQx9pHcnK7Cz3mWcNh3IIwaHFvZKA==
 
+react-native-mmkv@~2.12.2:
+  version "2.12.2"
+  resolved "https://registry.yarnpkg.com/react-native-mmkv/-/react-native-mmkv-2.12.2.tgz#4bba0f5f04e2cf222494cce3a9794ba6a4894dee"
+  integrity sha512-6058Aq0p57chPrUutLGe9fYoiDVDNMU2PKV+lLFUJ3GhoHvUrLdsS1PDSCLr00yqzL4WJQ7TTzH+V8cpyrNcfg==
+
 react-native-reanimated@~3.10.1:
   version "3.10.1"
   resolved "https://registry.yarnpkg.com/react-native-reanimated/-/react-native-reanimated-3.10.1.tgz#3c37d1100bbba0065df39c96aab0c1ff1b50c0fa"
