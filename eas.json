@@ -1,0 +1,34 @@
+{
+  "cli": {
+    "version": ">= 12.6.1",
+    "appVersionSource": "remote"
+  },
+  "build": {
+    "development": {
+      "node": "20.0.0",
+      "developmentClient": true,
+      "distribution": "internal",
+      "env": {
+        "APP_VARIANT": "development"
+      }
+    },
+    "preview": {
+      "node": "20.0.0",
+      "distribution": "internal",
+      "env": {
+        "APP_VARIANT": "preview"
+      }
+    },
+    "production": {
+      "node": "20.0.0",
+      "autoIncrement": true,
+      "resourceClass": "large",
+      "env": {
+        "APP_VARIANT": "production"
+      }
+    }
+  },
+  "submit": {
+    "production": {}
+  }
+}

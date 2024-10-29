@@ -1,37 +1,53 @@
-import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
-import { useFonts } from 'expo-font';
-import { Stack } from 'expo-router';
-import * as SplashScreen from 'expo-splash-screen';
-import { useEffect } from 'react';
+import { SplashScreen, Stack } from 'expo-router';
+import { useEffect, useState } from 'react';
+import type { PropsWithChildren } from 'react';
+import { StyleSheet } from 'react-native';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import { KeyboardProvider } from 'react-native-keyboard-controller';
+import { Toaster } from 'sonner-native';
 import 'react-native-reanimated';
 
-import { useColorScheme } from '@/hooks/useColorScheme';
+import '@/styles';
+import { APIProvider } from '@/core/api';
+import { hydrateAuth } from '@/core/auth';
+import { initI18n } from '@/core/i18n';
 
-// Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
+hydrateAuth();
 
 export default function RootLayout() {
-  const colorScheme = useColorScheme();
-  const [loaded] = useFonts({
-    SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
-  });
+  const [isI18nInitialized, setIsI18nInitialized] = useState(false);
 
   useEffect(() => {
-    if (loaded) {
-      SplashScreen.hideAsync();
-    }
-  }, [loaded]);
+    initI18n().then(() => {
+      SplashScreen.hideAsync().then(() => setIsI18nInitialized(true));
+    });
+  }, []);
 
-  if (!loaded) {
-    return null;
-  }
+  if (!isI18nInitialized) return null;
 
   return (
-    <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
+    <Providers>
       <Stack>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="+not-found" />
+        <Stack.Screen name="index" />
       </Stack>
-    </ThemeProvider>
+    </Providers>
   );
 }
+
+function Providers({ children }: PropsWithChildren) {
+  return (
+    <GestureHandlerRootView style={styles.container}>
+      <APIProvider>
+        <KeyboardProvider>{children}</KeyboardProvider>
+      </APIProvider>
+      <Toaster />
+    </GestureHandlerRootView>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+});
