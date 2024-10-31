@@ -2125,6 +2125,14 @@
     component-type "^1.2.1"
     join-component "^1.1.0"
 
+"@shopify/react-native-skia@^1.5.0":
+  version "1.5.0"
+  resolved "https://registry.yarnpkg.com/@shopify/react-native-skia/-/react-native-skia-1.5.0.tgz#2c771bb7b6ad49b4b1c1cfb3ed47c06c22203f87"
+  integrity sha512-YNcw7cbksiMJ3d8uxh14LFRztUhjQFphFV/GCm8cSO4SxFc4niqnvsGklXNv68DLESMdn5hQnfYpa0oJqaW20w==
+  dependencies:
+    canvaskit-wasm "0.39.1"
+    react-reconciler "0.27.0"
+
 "@sideway/address@^4.1.5":
   version "4.1.5"
   resolved "https://registry.yarnpkg.com/@sideway/address/-/address-4.1.5.tgz#4bc149a0076623ced99ca8208ba780d65a99b9d5"
@@ -2302,6 +2310,11 @@
   integrity sha512-vizm2EqwV/7Zay+A6J3tGl9Lhr7CjZe2HmWS988sefiEmsyP9CeXEleho6i4hJk/8UtZAo0bWN4QPZZr83RxvQ==
   dependencies:
     undici-types "~5.26.4"
+
+"@types/paho-mqtt@^1.0.10":
+  version "1.0.10"
+  resolved "https://registry.yarnpkg.com/@types/paho-mqtt/-/paho-mqtt-1.0.10.tgz#543349b95570c58e9d6c9e40c7e07937b38b8192"
+  integrity sha512-xOEii1m7jw7mIKjufDkolpz7VlyqptUmm/YFPtLJCybrPCuLhN+WYgNpulQ/CXo7wtEW7x4uGon2v89+6g/pcA==
 
 "@types/prop-types@*":
   version "15.7.13"
@@ -2481,6 +2494,11 @@
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/@web3-storage/multipart-parser/-/multipart-parser-1.0.0.tgz#6b69dc2a32a5b207ba43e556c25cc136a56659c4"
   integrity sha512-BEO6al7BYqcnfX15W2cnGR+Q566ACXAT9UQykORCWW80lmkpWsnEob6zJS1ZVBKsSJC8+7vJkHwlp+lXG1UCdw==
+
+"@webgpu/types@0.1.21":
+  version "0.1.21"
+  resolved "https://registry.yarnpkg.com/@webgpu/types/-/types-0.1.21.tgz#b181202daec30d66ccd67264de23814cfd176d3a"
+  integrity sha512-pUrWq3V5PiSGFLeLxoGqReTZmiiXwY3jRkIG5sLLKjyqNxrwm/04b4nw7LSmGWJcKk59XOM/YRTUwOzo4MMlow==
 
 "@xmldom/xmldom@^0.8.8":
   version "0.8.10"
@@ -3192,6 +3210,13 @@ caniuse-lite@^1.0.30001669:
   version "1.0.30001669"
   resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001669.tgz#fda8f1d29a8bfdc42de0c170d7f34a9cf19ed7a3"
   integrity sha512-DlWzFDJqstqtIVx1zeSpIMLjunf5SmwOw0N2Ck/QSQdS8PLS4+9HrLaYei4w8BIAL7IB/UEDu889d8vhCTPA0w==
+
+canvaskit-wasm@0.39.1:
+  version "0.39.1"
+  resolved "https://registry.yarnpkg.com/canvaskit-wasm/-/canvaskit-wasm-0.39.1.tgz#c3c8f3962cbabbedf246f7bcf90e859013c7eae9"
+  integrity sha512-Gy3lCmhUdKq+8bvDrs9t8+qf7RvcjuQn+we7vTVVyqgOVO1UVfHpsnBxkTZw+R4ApEJ3D5fKySl9TU11hmjl/A==
+  dependencies:
+    "@webgpu/types" "0.1.21"
 
 chalk@4, chalk@^4.0.0, chalk@^4.1.0, chalk@^4.1.2:
   version "4.1.2"
@@ -7371,6 +7396,11 @@ package-json-from-dist@^1.0.0:
   resolved "https://registry.yarnpkg.com/package-json-from-dist/-/package-json-from-dist-1.0.1.tgz#4f1471a010827a86f94cfd9b0727e36d267de505"
   integrity sha512-UEZIS3/by4OC8vL3P2dTXRETpebLI2NiI5vIrjaD/5UtrkFX/tNbwjTSRAGC/+7CAo2pIcBaRgWmcBBHcsaCIw==
 
+paho-mqtt@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/paho-mqtt/-/paho-mqtt-1.1.0.tgz#8c10e29eb162e966fb15188d965c3dce505de9d9"
+  integrity sha512-KPbL9KAB0ASvhSDbOrZBaccXS+/s7/LIofbPyERww8hM5Ko71GUJQ6Nmg0BWqj8phAIT8zdf/Sd/RftHU9i2HA==
+
 parent-module@^1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/parent-module/-/parent-module-1.0.1.tgz#691d2709e78c79fae3a156622452d00762caaaa2"
@@ -7774,6 +7804,11 @@ react-native-gesture-handler@~2.18.1:
     invariant "^2.2.4"
     prop-types "^15.7.2"
 
+react-native-graph@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/react-native-graph/-/react-native-graph-1.1.0.tgz#b0a98f96dc386d1a95aeec822a5db94ec9c3d3b4"
+  integrity sha512-jcPLfhOOzjNaug1yw4Y6RecqMTdsiW0dQD+VruOpgzUUIZivNHIQD4LCp3vqdpqhok/nqggviuHVAYQv1ICRTw==
+
 react-native-helmet-async@2.0.4:
   version "2.0.4"
   resolved "https://registry.yarnpkg.com/react-native-helmet-async/-/react-native-helmet-async-2.0.4.tgz#93f53a1ff22d6898039688a541653a2d6b6866bb"
@@ -7894,6 +7929,14 @@ react-query-kit@^3.3.0:
   version "3.3.0"
   resolved "https://registry.yarnpkg.com/react-query-kit/-/react-query-kit-3.3.0.tgz#369b748bd2c4c84e651172699e3617c7baa6c8f2"
   integrity sha512-4lmH/8eP/f0v4NnDuMS7hUPlw12yJ4YskghKZXnpoJrW8x6MJ6aNAqSTvqpGVk6WW+4nJH3NO6JXkPrOcMSEzg==
+
+react-reconciler@0.27.0:
+  version "0.27.0"
+  resolved "https://registry.yarnpkg.com/react-reconciler/-/react-reconciler-0.27.0.tgz#360124fdf2d76447c7491ee5f0e04503ed9acf5b"
+  integrity sha512-HmMDKciQjYmBRGuuhIaKA1ba/7a+UsM5FzOZsMO2JYHt9Jh8reCb7j1eDC95NOyUlKM9KRyvdx0flBuDvYSBoA==
+  dependencies:
+    loose-envify "^1.1.0"
+    scheduler "^0.21.0"
 
 react-refresh@^0.14.0, react-refresh@^0.14.2:
   version "0.14.2"
@@ -8218,6 +8261,13 @@ scheduler@0.24.0-canary-efb381bbf-20230505:
   version "0.24.0-canary-efb381bbf-20230505"
   resolved "https://registry.yarnpkg.com/scheduler/-/scheduler-0.24.0-canary-efb381bbf-20230505.tgz#5dddc60e29f91cd7f8b983d7ce4a99c2202d178f"
   integrity sha512-ABvovCDe/k9IluqSh4/ISoq8tIJnW8euVAWYt5j/bg6dRnqwQwiGO1F/V4AyK96NGF/FB04FhOUDuWj8IKfABA==
+  dependencies:
+    loose-envify "^1.1.0"
+
+scheduler@^0.21.0:
+  version "0.21.0"
+  resolved "https://registry.yarnpkg.com/scheduler/-/scheduler-0.21.0.tgz#6fd2532ff5a6d877b6edb12f00d8ab7e8f308820"
+  integrity sha512-1r87x5fz9MXqswA2ERLo0EbOAU74DpIUO090gIasYTqlVoJeMcl+Z1Rg7WHz+qtPujhS/hGIt9kxZOYBV3faRQ==
   dependencies:
     loose-envify "^1.1.0"
 

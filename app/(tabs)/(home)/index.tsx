@@ -1,169 +1,68 @@
-import Feather from '@expo/vector-icons/Feather';
-import { Stack } from 'expo-router';
-import { View } from 'react-native';
-import { KeyboardAwareScrollView } from 'react-native-keyboard-controller';
+import { ScrollView } from 'react-native';
 import { createStyleSheet, useStyles } from 'react-native-unistyles';
+import { toast } from 'sonner-native';
 
-import { Button, Input, Text } from '@/ui';
-
-const DEFAULT_OFFSET = 50;
+import { VitalSignGraph } from '@/app/components/VitalSignGraph';
+import { useICUData } from '@/hooks/use-icu-data';
 
 export default function HomeScreen() {
-  const { styles } = useStyles(stylesheet);
+  const { theme, styles } = useStyles(stylesheet);
+  const { data, isConnected } = useICUData({
+    onConnectionLost: (error) => {
+      toast.error(`Connection lost: ${error.errorMessage}`);
+    },
+    onMessageArrived: (rawData) => {
+      console.log('New data received:', rawData);
+    },
+  });
+
+  console.log('🧐 ~ HomeScreen ~ isConnected:', isConnected);
 
   return (
-    <>
-      <Stack.Screen options={{ title: 'UI References' }} />
-      <KeyboardAwareScrollView
-        contentContainerStyle={styles.container}
-        bottomOffset={DEFAULT_OFFSET}
-      >
-        <Text
-          preset="heading"
-          text="References for UI components"
-          style={styles.header}
-        />
-        <View style={styles.section}>
-          <Input label="Default" placeholder="default" />
-          <Input label="Error" error="This is a message error" />
-          <Input label="Disabled" disabled />
-          <Input
-            label="Default with LeftAccessory"
-            placeholder="default"
-            LeftAccessory={() => <Feather name="eye" size={24} color="black" />}
-          />
-          <Input
-            label="Default with RightAccessory"
-            placeholder="default"
-            RightAccessory={() => (
-              <Feather name="eye" size={24} color="black" />
-            )}
-          />
-        </View>
-        <View style={styles.section}>
-          <Button
-            tx="demoScreen:button.variant"
-            txOptions={{ variant: 'default' }}
-          />
-          <Button
-            tx="demoScreen:button.variantWithOpts"
-            txOptions={{ variant: 'default', opts: 'loading' }}
-            loading
-          />
-          <Button
-            tx="demoScreen:button.variantWithOpts"
-            txOptions={{ variant: 'default', opts: 'disabled' }}
-            disabled
-          />
-          <Button
-            tx="demoScreen:button.variant"
-            txOptions={{ variant: 'ghost' }}
-            variant="ghost"
-          />
-          <Button
-            tx="demoScreen:button.variantWithOpts"
-            txOptions={{ variant: 'ghost', opts: 'loading' }}
-            variant="ghost"
-            loading
-          />
-          <Button
-            tx="demoScreen:button.variantWithOpts"
-            txOptions={{ variant: 'ghost', opts: 'disabled' }}
-            variant="ghost"
-            disabled
-          />
-          <Button
-            tx="demoScreen:button.variant"
-            txOptions={{ variant: 'brand' }}
-            variant="brand"
-          />
-          <Button
-            tx="demoScreen:button.variantWithOpts"
-            txOptions={{ variant: 'brand', opts: 'loading' }}
-            variant="brand"
-            loading
-          />
-          <Button
-            tx="demoScreen:button.variantWithOpts"
-            txOptions={{ variant: 'brand', opts: 'disabled' }}
-            variant="brand"
-            disabled
-          />
-          <Button
-            tx="demoScreen:button.variant"
-            txOptions={{ variant: 'blu' }}
-            variant="blu"
-          />
-          <Button
-            tx="demoScreen:button.variantWithOpts"
-            txOptions={{ variant: 'blu', opts: 'loading' }}
-            variant="blu"
-            loading
-          />
-          <Button
-            tx="demoScreen:button.variantWithOpts"
-            txOptions={{ variant: 'blu', opts: 'disabled' }}
-            variant="blu"
-            disabled
-          />
-          <Button
-            tx="demoScreen:button.variant"
-            txOptions={{ variant: 'angry' }}
-            variant="angry"
-          />
-          <Button
-            tx="demoScreen:button.variantWithOpts"
-            txOptions={{ variant: 'angry', opts: 'loading' }}
-            variant="angry"
-            loading
-          />
-          <Button
-            tx="demoScreen:button.variantWithOpts"
-            txOptions={{ variant: 'angry', opts: 'disabled' }}
-            variant="angry"
-            disabled
-          />
-          <Button
-            text="Left Accessory"
-            LeftAccessory={() => (
-              <Feather name="chevron-left" size={24} color="black" />
-            )}
-          />
-          <Button
-            text="Right Accessory"
-            RightAccessory={() => (
-              <Feather name="chevron-right" size={24} color="black" />
-            )}
-          />
-          <Button
-            text="Left & Right Accessory"
-            LeftAccessory={() => (
-              <Feather name="chevron-left" size={24} color="black" />
-            )}
-            RightAccessory={() => (
-              <Feather name="chevron-right" size={24} color="black" />
-            )}
-          />
-        </View>
-        <View style={styles.section}>
-          <Input label="Default" placeholder="default" />
-          <Input label="Error" error="This is a message error" />
-          <Input label="Disabled" disabled />
-          <Input
-            label="Default with LeftAccessory"
-            placeholder="default"
-            LeftAccessory={() => <Feather name="eye" size={24} color="black" />}
-          />
-          <Input
-            label="Default with RightAccessory"
-            placeholder="default"
-            RightAccessory={() => (
-              <Feather name="eye" size={24} color="black" />
-            )}
-          />
-        </View>
-      </KeyboardAwareScrollView>
-    </>
+    <ScrollView contentContainerStyle={styles.container}>
+      <VitalSignGraph
+        title="ECG"
+        points={data.ecg}
+        currentValue={data.currentValues?.ecg}
+        color={theme.colors.ecg}
+        fillColors={theme.colors.ecgFillColor}
+      />
+      <VitalSignGraph
+        title="SpO2"
+        points={data.sp02}
+        currentValue={data.currentValues?.sp02}
+        color={theme.colors.sp02}
+        fillColors={theme.colors.sp02FillColor}
+      />
+      <VitalSignGraph
+        title="Heart Rate"
+        points={data.hr}
+        currentValue={data.currentValues?.hr}
+        color={theme.colors.hr}
+        fillColors={theme.colors.hrFillColor}
+      />
+      <VitalSignGraph
+        title="Respiratory Rate"
+        points={data.rr}
+        currentValue={data.currentValues?.rr}
+        color={theme.colors.rr}
+        fillColors={theme.colors.rrFillColor}
+      />
+      <VitalSignGraph
+        title="Body Temperature"
+        points={data.bt}
+        currentValue={data.currentValues?.bt}
+        color={theme.colors.bt}
+        fillColors={theme.colors.btFillColor}
+      />
+      <VitalSignGraph
+        title="NIBP"
+        points={data.nibp}
+        currentValue={data.currentValues?.nibp}
+        color={theme.colors.nibp}
+        fillColors={theme.colors.nibpFillColor}
+      />
+    </ScrollView>
   );
 }
 
@@ -173,11 +72,5 @@ const stylesheet = createStyleSheet((theme, runtime) => ({
     paddingTop: runtime.insets.top,
     paddingHorizontal: theme.spacing.xs,
     backgroundColor: theme.colors.background,
-  },
-  header: {
-    paddingBottom: theme.spacing.md,
-  },
-  section: {
-    padding: theme.spacing.md,
   },
 }));

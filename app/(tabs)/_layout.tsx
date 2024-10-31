@@ -9,11 +9,11 @@ export default function Layout() {
 
   useEffect(() => {
     if (status !== 'idle') {
-      SplashScreen.hideAsync();
+      setTimeout(() => SplashScreen.hideAsync(), 1000);
     }
   }, [status]);
 
-  if (status === 'signOut') return <Redirect href="/login" />;
+  // if (status === 'signOut') return <Redirect href="/login" />;
 
   return (
     <Tabs>
