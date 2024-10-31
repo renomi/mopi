@@ -2,8 +2,11 @@ import type {
   GetNextPageParamFunction,
   GetPreviousPageParamFunction,
 } from '@tanstack/react-query';
+import type { InternalAxiosRequestConfig } from 'axios';
 
-import type { PaginateQuery } from '../types';
+import { getToken } from '@/core/auth/utils';
+
+import type { GeneralErrorResponse, PaginateQuery } from '../types';
 
 type KeyParams = {
   [key: string]: any;
@@ -49,3 +52,16 @@ export const getNextPageParam: GetPreviousPageParamFunction<
   unknown,
   PaginateQuery<unknown>
 > = (page) => getUrlParameters(page.next)?.offset ?? null;
+
+// interceptors to a custom instance of axios.
+export const requestHandler = (config: InternalAxiosRequestConfig<any>) => {
+  const tokens = getToken();
+  if (tokens?.access) {
+    config.headers.Authorization = `Bearer ${tokens.access}`;
+  }
+  return config;
+};
+
+export const getErrorMessage = (err: GeneralErrorResponse) => {
+  return err.response?.data?.message ?? err.message;
+};

@@ -3,7 +3,7 @@ import { create } from 'zustand';
 import { createSelectors } from '@/utils/selector';
 
 import type { TokenType } from './utils';
-import { getToken, removeToken, setToken } from './utils';
+import { removeToken, setToken } from './utils';
 
 interface AuthState {
   token: TokenType | null;
@@ -26,12 +26,14 @@ const _useAuth = create<AuthState>((set, get) => ({
   },
   hydrate: () => {
     try {
-      const userToken = getToken();
-      if (userToken !== null) {
-        get().signIn(userToken);
-      } else {
-        get().signOut();
-      }
+      // const userToken = getToken();
+      // if (userToken !== null) {
+      //   get().signIn(userToken);
+      // } else {
+      //   get().signOut();
+      // }
+      // TODO: add actual logic when refresh token is handled
+      get().signOut();
     } catch (err) {
       // catch error here
       // Maybe sign_out user

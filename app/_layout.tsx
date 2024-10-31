@@ -30,7 +30,7 @@ export default function RootLayout() {
     <Providers>
       <Stack>
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="login" />
+        <Stack.Screen name="login" options={{ headerShown: false }} />
       </Stack>
     </Providers>
   );
