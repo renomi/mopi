@@ -88,7 +88,7 @@ export const Input = forwardRef<TextInput, InputProps>((props, ref) => {
           style={styles.label}
         />
       )}
-      <View style={styles.inputWrapper}>
+      <View style={[styles.inputWrapper, inputProps.style]}>
         {!!LeftAccessory && <LeftAccessory disabled={disabled} />}
         <TextInput
           {...inputProps}
@@ -97,7 +97,7 @@ export const Input = forwardRef<TextInput, InputProps>((props, ref) => {
           onBlur={handleFocus('blur')}
           ref={ref}
           placeholderTextColor={styles.placeholder.color}
-          style={[styles.input, inputProps.style]}
+          style={styles.input}
           testID={testID}
         />
         {!!RightAccessory && <RightAccessory disabled={disabled} />}
