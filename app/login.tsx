@@ -34,7 +34,7 @@ export default function LogInScreen() {
 
         if (authToken) {
           signIn({ access: authToken });
-          router.push('/');
+          router.replace('/');
         }
       },
       onError: (err) => {

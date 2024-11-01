@@ -1,10 +1,12 @@
-import Entypo from '@expo/vector-icons/Entypo';
+import Ionicons from '@expo/vector-icons/Ionicons';
 import { Redirect, SplashScreen, Tabs } from 'expo-router';
 import { useEffect } from 'react';
+import { useStyles } from 'react-native-unistyles';
 
 import { useAuth } from '@/core/auth';
 
 export default function Layout() {
+  const { theme } = useStyles();
   const status = useAuth.use.status();
 
   useEffect(() => {
@@ -16,14 +18,26 @@ export default function Layout() {
   if (status === 'signOut') return <Redirect href="/login" />;
 
   return (
-    <Tabs>
+    <Tabs
+      screenOptions={{
+        tabBarStyle: {
+          paddingBottom: theme.spacing.xxs,
+        },
+        tabBarActiveTintColor: theme.colors.palette.brand500,
+        tabBarInactiveTintColor: theme.colors.palette.neutral500,
+      }}
+    >
       <Tabs.Screen
-        name="(home)"
+        name="index"
         options={{
-          title: 'Home',
-          tabBarShowLabel: false,
-          tabBarIcon: ({ size, color }) => (
-            <Entypo name="leaf" size={size} color={color} />
+          tabBarLabel: 'Beranda',
+          tabBarShowLabel: true,
+          tabBarIcon: ({ size, color, focused }) => (
+            <Ionicons
+              name={focused ? 'home' : 'home-outline'}
+              size={size}
+              color={color}
+            />
           ),
           headerShown: false,
         }}
