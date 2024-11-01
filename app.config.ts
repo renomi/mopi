@@ -57,6 +57,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   ios: {
     supportsTablet: true,
     bundleIdentifier: getAppId(),
+    // googleServicesFile: './GoogleService-Info.plist',
   },
   android: {
     adaptiveIcon: {
@@ -64,6 +65,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
       backgroundColor: '#ffffff',
     },
     package: getAppId(),
+    googleServicesFile: './google-services.json',
   },
   web: {
     bundler: 'metro',
@@ -93,6 +95,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
         ],
       },
     ],
+    "@react-native-firebase/app",
   ],
   experiments: {
     typedRoutes: true,

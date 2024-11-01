@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "411371710137",
+    "project_id": "bpjs-mopi",
+    "storage_bucket": "bpjs-mopi.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:411371710137:android:bc6654541cdd5ebcd41d68",
+        "android_client_info": {
+          "package_name": "com.geram.mopi.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB7gn2oEExT9xPZAIJMoGUFgx9bYm5dk-w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
