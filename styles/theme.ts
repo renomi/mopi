@@ -51,9 +51,25 @@ const sharedColors = {
   fog: '##edededb8',
 };
 
+const icuColors = {
+  ecg: '#00FF00', // ECG most commonly green
+  ecgFillColor: ['rgba(0, 255, 0, 0.2)', 'rgba(0, 255, 0, 0.0)'],
+  hr: '#FF4500', // Heart Rate most commonly red
+  hrFillColor: ['rgba(255, 69, 0, 0.2)', 'rgba(255, 69, 0, 0.0)'],
+  sp02: '#0000FF', // SpO2 most commonly blue,
+  sp02FillColor: ['rgba(0, 0, 255, 0.2)', 'rgba(0, 0, 255, 0.0)'],
+  rr: '#FFA500', // RR most commonly orange
+  rrFillColor: ['rgba(255, 165, 0, 0.2)', 'rgba(255, 165, 0, 0.0)'],
+  bt: '#FF1493', // Body Temperature most commonly red
+  btFillColor: ['rgba(255, 20, 147, 0.2)', 'rgba(255, 20, 147, 0.0)'],
+  nibp: '#8A2BE2', // NIBP most commonly purple
+  nibpFillColor: ['rgba(138, 43, 226, 0.2)', 'rgba(138, 43, 226, 0.0)'],
+};
+
 export const lightTheme = {
   colors: {
     ...sharedColors,
+    ...icuColors,
     palette,
     background: '#f8fafc',
     text: '#000',

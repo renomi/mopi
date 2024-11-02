@@ -1,3 +1,4 @@
+import { BottomSheetModalProvider } from '@gorhom/bottom-sheet';
 import { SplashScreen, Stack } from 'expo-router';
 import { useEffect, useState } from 'react';
 import type { PropsWithChildren } from 'react';
@@ -31,6 +32,7 @@ export default function RootLayout() {
       <Stack>
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
         <Stack.Screen name="login" options={{ headerShown: false }} />
+        <Stack.Screen name="patient" options={{ headerShown: false }} />
       </Stack>
     </Providers>
   );
@@ -39,9 +41,11 @@ export default function RootLayout() {
 function Providers({ children }: PropsWithChildren) {
   return (
     <GestureHandlerRootView style={styles.container}>
-      <APIProvider>
-        <KeyboardProvider>{children}</KeyboardProvider>
-      </APIProvider>
+      <BottomSheetModalProvider>
+        <APIProvider>
+          <KeyboardProvider>{children}</KeyboardProvider>
+        </APIProvider>
+      </BottomSheetModalProvider>
       <Toaster />
     </GestureHandlerRootView>
   );

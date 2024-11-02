@@ -19,7 +19,7 @@ export type TextProps = RNTextProps &
   Variants & {
     tx?: TxKeyPath;
     txOptions?: TOptions;
-    text?: string;
+    text?: string | number;
     children?: ReactNode;
     style?: StyleProp<TextStyle>;
   };

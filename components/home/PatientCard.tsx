@@ -9,8 +9,7 @@ import Animated, {
 } from 'react-native-reanimated';
 import { createStyleSheet, useStyles } from 'react-native-unistyles';
 
-import { Skeleton } from '@/ui/skeleton';
-import { Text } from '@/ui/text';
+import { Skeleton, Text } from '@/ui';
 
 const AnimatedPress = Animated.createAnimatedComponent(Pressable);
 

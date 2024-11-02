@@ -1,5 +1,6 @@
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { FlashList } from '@shopify/flash-list';
+import { useRouter } from 'expo-router';
 import { useCallback, useMemo, useState } from 'react';
 import { View } from 'react-native';
 import Animated, { FadeInRight } from 'react-native-reanimated';
@@ -10,13 +11,13 @@ import { useProfile } from '@/core/api/doctors';
 import { usePatients } from '@/core/api/patients';
 import type { HospitalPatient } from '@/core/api/patients';
 import { useDebouncedValue, useRefreshOnFocus } from '@/hooks';
-import { Input, Text } from '@/ui';
-import { Skeleton } from '@/ui/skeleton';
+import { Input, Skeleton, Text } from '@/ui';
 import { filterPatients, flattenSections } from '@/utils/sorting';
 
 export default function HomeScreen() {
   const [query, setQuery] = useState('');
   const [debouncedQuery] = useDebouncedValue(query, 300);
+  const router = useRouter();
   const { styles } = useStyles(stylesheet);
 
   const {
@@ -34,6 +35,13 @@ export default function HomeScreen() {
     return flattenSections(filteredData);
   }, [patients, debouncedQuery]);
 
+  const handleSelectedPatient = useCallback(
+    (patient: HospitalPatient) => () => {
+      router.navigate(`/patient/${patient.id}`);
+    },
+    [router],
+  );
+
   const renderItem = useCallback(
     ({ item }: { item: HospitalPatient | string }) => {
       if (typeof item === 'string') {
@@ -49,12 +57,16 @@ export default function HomeScreen() {
       } else {
         // Render item
         return (
-          <PatientCard name={item.name} healthStatus={item.healthStatus} />
+          <PatientCard
+            onPress={handleSelectedPatient(item)}
+            name={item.name}
+            healthStatus={item.healthStatus}
+          />
         );
       }
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [],
+    [handleSelectedPatient],
   );
 
   const renderEmptyList = useCallback(() => {
